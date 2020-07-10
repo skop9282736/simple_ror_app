@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get '/help', to: 'staticpages#help', as: 'help'
   get '/contact', to: 'staticpages#contact', as: 'contact'
   root "staticpages#home"
+  resources :users
 end

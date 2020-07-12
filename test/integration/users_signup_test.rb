@@ -17,4 +17,16 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       assert_template 'users/new'
   end
 
+  test "valid signup" do
+    post users_path, params: {
+      user: { name: "ismailovic",
+              email: "user@valid.com",
+              password:              "password123",
+              password_confirmation: "password123" }}
+      old_count = User.count
+      assert_not old_count == @count
+      follow_redirect!
+      assert_template 'users/show'
+  end
+
 end
